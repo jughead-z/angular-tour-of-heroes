@@ -13,7 +13,7 @@ export class AppComponent implements AfterViewInit {
   title = 'angular-tour-of-heroes';
   
   // Array of dynamic texts to be animated
-  texts: string[] = ['hamid', 'koko', 'example', 'dynamic'];
+  texts: string[] = ['hamid', 'koko'];
   
   // Current index of the text array
   currentIndex: number = 0;
@@ -41,22 +41,22 @@ export class AppComponent implements AfterViewInit {
       element.innerHTML = text.split('').map(letter => `<span>${letter}</span>`).join('');
 
       // Total animation duration set to 4500ms (including reveal and fade-out)
-      const totalDuration = 4500;
+      const totalDuration = 5500;
 
       anime.timeline({loop: false})
         .add({
           targets: '#title span',
           opacity: [0, 1],
           easing: 'easeInOutQuad',
-          duration: 50, // Speed for each letter reveal (50ms)
-          delay: (el: any, i: number) => 50 * i, // Delay between letters
+          duration: 60, // Speed for each letter reveal (50ms)
+          delay: (el: any, i: number) => 60 * i, // Delay between letters
         })
         .add({
           targets: '#title span',
           opacity: [1, 0],
           easing: 'easeInOutQuad',
           duration: 50, // Speed for each letter fade-out (50ms)
-          delay: (el: any, i: number) => totalDuration / text.length + 50 * i, // Control the total time before fading out
+          delay: (el: any, i: number) => totalDuration / text.length + 60 * i, // Control the total time before fading out
           complete: callback // Trigger the next text animation when fade-out is complete
         });
     }
